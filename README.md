@@ -42,11 +42,11 @@ provides a simple text representation of arbitrary data structures. For more inf
 
 2. Select **`API Access`** option, like in the screen shot:
 
- >![](images/1.png)
+ >![](https://raw.github.com/IonicaBizau/test-youtube-api/master/images/1.png)
 
 2. Then create an **OAuth 2.0 client ID**.
 
- >![](images/2.png)
+ >![](https://raw.github.com/IonicaBizau/test-youtube-api/master/images/1.png)
 
 2. Complete the required fields:
 
