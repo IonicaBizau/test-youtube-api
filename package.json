@@ -1,0 +1,11 @@
+{
+  "name": "test-youtube-api",
+  "version": "0.0.0",
+  "description": "Test Youtube API NodeJS module",
+  "author": "IonicaBizau",
+  "dependencies": {
+    "youtube-api": "*",
+    "request": "*"
+  },
+  "license": "BSD-2-Clause"
+}
