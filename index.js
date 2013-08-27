@@ -47,31 +47,28 @@ http.createServer(function (req, res) {
 
         var formData = "code=" + code +
                        "&client_id=" + credentials.client_id +
-                       "&client_secret" + credentials.client_secret +
-                       "&redirect_uri" + credentials.redirect_uri +
+                       "&client_secret=" + credentials.client_secret +
+                       "&redirect_uri=" + credentials.redirect_uri +
                        "&grant_type=authorization_code";
 
         var options = {
             url: "https://accounts.google.com/o/oauth2/token",
+            headers: {'content-type' : 'application/x-www-form-urlencoded'},
             method: "POST",
-            form: formData,
-            multipart: [
-                {
-                    "content-type": 'application/x-www-form-urlencoded',
-                    body: formData
-                }
-            ]
+            body: formData
         };
 
-        request(options, function (err, res, body) {
+        request(options, function (err, response, body) {
             if (err) {
                 return res.end(err);
             }
-            if (res.code === 200) {
-                return res.end(body);
+            // success!
+            if (response.code === 200) {
+                var accessToken = JSON.parse(body).access_token;
+                return res.end("Access token: " + accessToken);
             }
 
-            return res.end("Something wrong...");
+            return res.end("Something wrong: \n" + body);
         });
 
         return;
