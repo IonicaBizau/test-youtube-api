@@ -59,16 +59,27 @@ http.createServer(function (req, res) {
         };
 
         request(options, function (err, response, body) {
+
             if (err) {
                 return res.end(err);
             }
-            // success!
-            if (response.code === 200) {
-                var accessToken = JSON.parse(body).access_token;
+
+            try {
+                body = JSON.parse(body);
+            } catch (e) {
+                return res.end(e.message + " :: " + body);
+            }
+            if (body.error) {
+                return res.end(err);
+            }
+
+            // success
+            if (body.access_token) {
+                var accessToken = body.access_token;
                 return res.end("Access token: " + accessToken);
             }
 
-            return res.end("Something wrong: \n" + body);
+            return res.end("Something wrong: \n" + JSON.stringify(body, null, 4));
         });
 
         return;
