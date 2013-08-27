@@ -1,4 +1,7 @@
 var Youtube = require("youtube-api");
+for (var i in Youtube) {
+    console.log(i);
+}
 var http = require("http");
 // You have to provide the credentials, first (in credentials.json file: rename .templ.json into json)
 var credentials = require("./credentials");
@@ -11,6 +14,22 @@ credentials.access_type = "offline";
 http.createServer(function (req, res) {
 
     if (req.url === "/") {
+        if (typeof ACCESS_TOKEN !== "undefined") {
+            Youtube.authenticate({
+                type: "oauth",
+                token: ACCESS_TOKEN
+            });
+
+            Youtube.channels.list({"part": "id", "mySubscribers": true, "maxResults": 50}, function (err, data) {
+                var response = "";
+                response += "Error: " + JSON.stringify(err, null, 4) + "\n";
+                response += "Data: " + JSON.stringify(data, null, 4);
+                res.end(response);
+            });
+
+            return;
+        }
+
         var authUrl = "https://accounts.google.com/o/oauth2/auth?";
 
         for (var key in credentials) {
@@ -75,8 +94,8 @@ http.createServer(function (req, res) {
 
             // success
             if (body.access_token) {
-                var accessToken = body.access_token;
-                return res.end("Access token: " + accessToken);
+                ACCESS_TOKEN = body.access_token;
+                return res.end("Access token: " + ACCESS_TOKEN);
             }
 
             return res.end("Something wrong: \n" + JSON.stringify(body, null, 4));
