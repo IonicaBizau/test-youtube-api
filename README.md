@@ -8,10 +8,9 @@ Test application that tests Youtube API NodeJS module.
 1. [Register your application](https://developers.google.com/youtube/registering_an_application)  with Google so that it can submit API requests.
 
 1. After registering your application, select the YouTube Data API as one of the services that your application uses:
-
-  - Go to the [APIs Console](https://code.google.com/apis/console/) and select the project that you just registered.
-  - Click on the Services pane.
-  - In the list of APIs, find the **YouTube Data API and change** its status to ON.
+ - Go to the [APIs Console](https://code.google.com/apis/console/) and select the project that you just registered.
+ - Click on the Services pane.
+ - In the list of APIs, find the **YouTube Data API and change** its status to ON.
 
 1. Familiarize yourself with the core concepts of the JSON (JavaScript Object Notation) data format. JSON is a common, language-independent data format that
 provides a simple text representation of arbitrary data structures. For more information, see [json.org](http://json.org/).
@@ -20,49 +19,49 @@ provides a simple text representation of arbitrary data structures. For more inf
 
 ## Installation
 
-1. Download this repository using:
+2. Download this repository using:
 
-```
-git clone http://github.com/IonicaBizau/test-youtube-api
-```
+ ```
+ git clone http://github.com/IonicaBizau/test-youtube-api
+ ```
 
-or via `npm`:
+ or via `npm`:
 
-```
-npm install test-youtube-api
-```
+ ```
+ npm install test-youtube-api
+ ```
 
-1. If you downloaded the repository using `git clone` enter in the downloaded directory and run `npm install`:
+2. If you downloaded the repository using `git clone` enter in the downloaded directory and run `npm install`:
 
-```
-cd test-youtube-api
-npm install
-```
+ ```
+ cd test-youtube-api
+ npm install
+ ```
 
-1. Go to your [Google apps](https://code.google.com/apis/console/b/0/) and select your application.
+2. Go to your [Google apps](https://code.google.com/apis/console/b/0/) and select your application.
 
-1. Select **`API Access`** option, like in the screen shot:
+2. Select **`API Access`** option, like in the screen shot:
 
-![](images/1.png)
+ >![](images/1.png)
 
-1. Then create an **OAuth 2.0 client ID**.
+2. Then create an **OAuth 2.0 client ID**.
 
-![](images/2.png)
+ >![](images/2.png)
 
-1. Complete the required fields:
+2. Complete the required fields:
 
  - Product name: what ever you want (e.g. "Youtube API Test")
  - Product logo is optional
  - Home page is optional
 
-1. Click **Next** button.
-1. Select **Web application** option.
-1. Set the **site or hostname** as `localhost:3000`, so the redirect uri will be: `http://www.example.com/oauth2callback`
-1. Click **Create client ID** button.
+2. Click **Next** button.
+2. Select **Web application** option.
+2. Set the **site or hostname** as `localhost:3000`, so the redirect uri will be: `http://www.example.com/oauth2callback`
+2. Click **Create client ID** button.
 1. Rename `credentials.templ.json` into `credentials.json`.
-1. Open `credentials.json` and replace `yourClientId` with the **client id** and `yourSecretKey` with **client secret** generated in the step 10.
-1. Now you are ready. Start the script and open `http://localhost:3000`.
+2. Open `credentials.json` and replace `yourClientId` with the **client id** and `yourSecretKey` with **client secret** generated in the step 10.
+2. Now you are ready. Start the script and open `http://localhost:3000`.
 
-```
-node index.js
-```
+ ```
+ node index.js
+ ```
