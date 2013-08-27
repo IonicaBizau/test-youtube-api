@@ -1,7 +1,5 @@
 # NodeJS Youtube API Test
-
 Test application that tests Youtube API NodeJS module.
-
 
 ## Before you start
 
