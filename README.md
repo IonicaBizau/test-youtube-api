@@ -46,7 +46,7 @@ provides a simple text representation of arbitrary data structures. For more inf
 
 2. Then create an **OAuth 2.0 client ID**.
 
- >![](https://raw.github.com/IonicaBizau/test-youtube-api/master/images/1.png)
+ >![](https://raw.github.com/IonicaBizau/test-youtube-api/master/images/2.png)
 
 2. Complete the required fields:
 
