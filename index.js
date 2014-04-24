@@ -1,9 +1,13 @@
 var express = require('express'),
-    videos = require('./routes/videos');
+    yt = require('./routes/yt');
  
 var app = express();
  
-app.get('/videos', videos.listAllActivities);
+app.get('/yt/activities/:maxResults', yt.listAllActivities);
+app.get('/yt/activities', yt.listAllActivities);
+app.get('/yt/activities/after/:date', yt.listActivitiesAfter); //with this format YYYY-MM-DDThh:mm:ss.sZ
+app.get('/yt/activities/before/:date', yt.listActivitiesBefore); //with this format YYYY-MM-DDThh:mm:ss.sZ
+
 
 // You have to provide the credentials, first (in credentials.json file: rename .templ.json into json)
 var credentials = require("./credentials");
@@ -26,7 +30,7 @@ app.get('/',function(req, res){
     if (typeof ACCESS_TOKEN == "undefined") {
 	  var html = "Click <a href='" + authUrl + "'>here</a> to get the access token.";
 	} else {	
-	  var html = "Click <a href='http://localhost:3000/videos'>here</a> to see the list of all activities.";
+	  var html = "Click <a href='http://localhost:3000/yt/activities'>here</a> to see the list of all activities.";
 	}
 	res.setHeader("Content-Type", "text/html");
 	res.end(html);
