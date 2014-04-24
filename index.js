@@ -20,7 +20,7 @@ http.createServer(function (req, res) {
                 token: ACCESS_TOKEN
             });
 
-            Youtube.channels.list({"part": "id", "mySubscribers": true, "maxResults": 50}, function (err, data) {
+            Youtube.activities.list({"part": "snippet,contentDetails", "home":true, "maxResults": 50}, function (err, data) {
                 var response = "";
                 response += "Error: " + JSON.stringify(err, null, 4) + "\n";
                 response += "Data: " + JSON.stringify(data, null, 4);
