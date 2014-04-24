@@ -66,3 +66,9 @@ provides a simple text representation of arbitrary data structures. For more inf
 
 3. Use express to have a better way to access the API.
 3. More calls to the API with examples.
+
+## Examples
+ - http://localhost:3000/yt/activities = All activities limited to 50 results.
+ - http://localhost:3000/yt/activities/15 = All activities limited  to 15 results.	  
+ - http://localhost:3000/yt/activities/after/YYYY-MM-DDThh:mm:ss.sZ = All activities limited to 50 result that where published after the date expecified.
+ - http://localhost:3000/yt/activities/before/YYYY-MM-DDThh:mm:ss.sZ = All activities limited to 50 result that where published before the date expecified.

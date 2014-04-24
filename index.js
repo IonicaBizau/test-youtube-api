@@ -30,7 +30,12 @@ app.get('/',function(req, res){
     if (typeof ACCESS_TOKEN == "undefined") {
 	  var html = "Click <a href='" + authUrl + "'>here</a> to get the access token.";
 	} else {	
-	  var html = "Click <a href='http://localhost:3000/yt/activities'>here</a> to see the list of all activities.";
+      var html = "You can call this REStfull links:";
+	  html += "<br><ul><li>http://" + req.host + ":3000/yt/activities = All activities limited to 50 results.</li>";
+      html += "<li>http://" + req.host + ":3000/yt/activities/15 = All activities limited  to 15 results.</li>";	  
+	  html += "<li>http://" + req.host + ":3000/yt/activities/after/YYYY-MM-DDThh:mm:ss.sZ = All activities limited to 50 result that where published after the date expecified.</li>";
+      html += "<li>http://" + req.host + ":3000/yt/activities/before/YYYY-MM-DDThh:mm:ss.sZ = All activities limited to 50 result that where published before the date expecified.</li></ul>";
+	  html += "<br>Click <a href='http://" + req.host + ":3000/yt/activities'>here</a> to see the list of all activities. (http://" + req.host + ":3000/yt/activities)";
 	}
 	res.setHeader("Content-Type", "text/html");
 	res.end(html);
