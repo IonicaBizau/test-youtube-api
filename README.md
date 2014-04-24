@@ -2,7 +2,7 @@
 Test application that tests Youtube API NodeJS module.
 
 # Original project
-- You can find the Orinal project here http://github.com/IonicaBizau/test-youtube-api
+- You can find the Original project here http://github.com/IonicaBizau/test-youtube-api
 
 ## Before you start
 
