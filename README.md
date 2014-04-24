@@ -64,8 +64,8 @@ provides a simple text representation of arbitrary data structures. For more inf
  ```
 ## TO-DO
 
-3. Use express to have a better way to access the API.
-3. More calls to the API with examples.
+3. ~~Use express to have a better way to access the API.~~
+3. ~~More calls to the API with examples.~~
 
 ## Examples
  - http://localhost:3000/yt/activities = All activities limited to 50 results.
