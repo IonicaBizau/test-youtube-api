@@ -1,8 +1,6 @@
 var Youtube = require("youtube-api");
-for (var i in Youtube) {
-    console.log(i);
-}
 var http = require("http");
+
 // You have to provide the credentials, first (in credentials.json file: rename .templ.json into json)
 var credentials = require("./credentials");
 var request = require("request");
