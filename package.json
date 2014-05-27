@@ -2,7 +2,7 @@
   "name": "test-youtube-api",
   "version": "0.1.1",
   "description": "Test Youtube API NodeJS module",
-  "author": "IonicaBizau",
+  "author": "Ionică Bizău",
   "contributors": [
     "Ionică Bizău <bizauionica@gmail.com>",
     "Fernando Derkoski <brilvio@gmail.com>"
