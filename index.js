@@ -87,7 +87,7 @@ http.createServer(function (req, res) {
                 return res.end(e.message + " :: " + body);
             }
             if (body.error) {
-                return res.end(err);
+                return res.end(err || body.error);
             }
 
             // success
@@ -103,6 +103,6 @@ http.createServer(function (req, res) {
     }
 
     res.end("404 - Not found.");
-}).listen(3000);
+}).listen(5000);
 
 console.log("Open: http://localhost:3000");
