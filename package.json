@@ -1,11 +1,22 @@
 {
   "name": "test-youtube-api",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Test Youtube API NodeJS module",
   "author": "IonicaBizau",
+  "contributors": [
+		{
+			"name": "Ionică Bizău",
+			"email": "bizauionica@gmail.com"
+		},
+		{
+			"name": "Fernando Derkoski",
+			"email": "brilvio@gmail.com"
+		}
+	]
   "dependencies": {
     "youtube-api": "*",
-    "request": "*"
+    "request": "*",
+	"express": "*"
   },
   "license": "BSD-2-Clause"
 }
