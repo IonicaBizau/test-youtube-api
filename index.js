@@ -87,7 +87,7 @@ app.get('/oauth2callback',function(req, res) {
             return res.end(e.message + " :: " + body);
         }
         if (body.error) {
-            return res.end(err);
+            return res.end(err || body.error);
         }
 
         // success
