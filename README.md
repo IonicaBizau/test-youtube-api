@@ -1,9 +1,6 @@
 # NodeJS Youtube API Test
 Test application that tests Youtube API NodeJS module.
 
-# Original project
-- You can find the Original project here http://github.com/IonicaBizau/test-youtube-api
-
 ## Before you start
 
 1. You need a [Google Account](https://www.google.com/accounts/NewAccount) to access the Google APIs Console, request an API key, and register your application.
@@ -69,6 +66,6 @@ provides a simple text representation of arbitrary data structures. For more inf
 
 ## Examples
  - http://localhost:3000/yt/activities = All activities limited to 50 results.
- - http://localhost:3000/yt/activities/15 = All activities limited  to 15 results.	  
+ - http://localhost:3000/yt/activities/15 = All activities limited  to 15 results.
  - http://localhost:3000/yt/activities/after/YYYY-MM-DDThh:mm:ss.sZ = All activities limited to 50 result that where published after the date expecified.
  - http://localhost:3000/yt/activities/before/YYYY-MM-DDThh:mm:ss.sZ = All activities limited to 50 result that where published before the date expecified.
