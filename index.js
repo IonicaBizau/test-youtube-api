@@ -6,6 +6,8 @@ var express = require('express'),
 
 var app = express();
 
+global.ACCESS_TOKEN = undefined;
+
 app.get('/yt/activities/:maxResults', yt.listAllActivities);
 app.get('/yt/activities', yt.listAllActivities);
 app.get('/yt/activities/after/:date', yt.listActivitiesAfter); //with this format YYYY-MM-DDThh:mm:ss.sZ
@@ -33,11 +35,11 @@ app.get('/',function(req, res){
       var html = "Click <a href='" + authUrl + "'>here</a> to get the access token.";
     } else {
       var html = "You can call this REStfull links:";
-      html += "<br><ul><li>http://" + req.host + ":3000/yt/activities = All activities limited to 50 results.</li>";
-      html += "<li>http://" + req.host + ":3000/yt/activities/15 = All activities limited  to 15 results.</li>";
-      html += "<li>http://" + req.host + ":3000/yt/activities/after/YYYY-MM-DDThh:mm:ss.sZ = All activities limited to 50 result that where published after the date expecified.</li>";
-      html += "<li>http://" + req.host + ":3000/yt/activities/before/YYYY-MM-DDThh:mm:ss.sZ = All activities limited to 50 result that where published before the date expecified.</li></ul>";
-      html += "<br>Click <a href='http://" + req.host + ":3000/yt/activities'>here</a> to see the list of all activities. (http://" + req.host + ":3000/yt/activities)";
+      html += "<br><ul><li>/yt/activities = All activities limited to 50 results.</li>";
+      html += "<li>/yt/activities/15 = All activities limited  to 15 results.</li>";
+      html += "<li>/yt/activities/after/YYYY-MM-DDThh:mm:ss.sZ = All activities limited to 50 result that where published after the date expecified.</li>";
+      html += "<li>/yt/activities/before/YYYY-MM-DDThh:mm:ss.sZ = All activities limited to 50 result that where published before the date expecified.</li></ul>";
+      html += "<br>Click <a href='/yt/activities'>here</a> to see the list of all activities. (/yt/activities)";
     }
     res.setHeader("Content-Type", "text/html");
     res.end(html);
@@ -93,7 +95,7 @@ app.get('/oauth2callback',function(req, res) {
         // success
         if (body.access_token) {
             ACCESS_TOKEN = body.access_token;
-            var html = "Click <a href='http://localhost:3000'>here</a> to go back.</br> Access token: " + ACCESS_TOKEN;
+            var html = "Click <a href='/'>here</a> to go back.</br> Access token: " + ACCESS_TOKEN;
             res.setHeader("Content-Type", "text/html");
             return res.end(html);
         }
