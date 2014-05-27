@@ -4,19 +4,32 @@
   "description": "Test Youtube API NodeJS module",
   "author": "IonicaBizau",
   "contributors": [
-		{
-			"name": "Ionică Bizău",
-			"email": "bizauionica@gmail.com"
-		},
-		{
-			"name": "Fernando Derkoski",
-			"email": "brilvio@gmail.com"
-		}
-	]
+    "Ionică Bizău <bizauionica@gmail.com>",
+    "Fernando Derkoski <brilvio@gmail.com>"
+  ],
+  "main": "index.js",
   "dependencies": {
-    "youtube-api": "*",
-    "request": "*",
-	"express": "*"
+    "express": "^4.3.1",
+    "request": "^2.36.0",
+    "youtube-api": "^0.2.2"
   },
-  "license": "BSD-2-Clause"
+  "devDependencies": {},
+  "scripts": {
+    "test": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IonicaBizau/test-youtube-api.git"
+  },
+  "keywords": [
+    "youtube",
+    "api",
+    "node",
+    "test"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IonicaBizau/test-youtube-api/issues"
+  },
+  "homepage": "https://github.com/IonicaBizau/test-youtube-api"
 }
