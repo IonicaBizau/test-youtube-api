@@ -10,16 +10,24 @@
             #editor {
                 position: absolute;
                 top: 0;
-                right: 0;
+                right: 50%;
                 bottom: 0;
                 left: 0;
+            }
+
+            #response-editor {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 50%;
             }
 
             button.run-code-btn {
                 position: absolute;
                 z-index: 10;
-                right: 10px;
-                top: 10px;
+                right: 50%;
+                top: 0;
                 background: rgb(0, 173, 255);
                 border: none;
                 color: white;
@@ -41,5 +49,6 @@ Youtube.channels.list({
     "mySubscribers": true,
     "maxResults": 50
 }, _CALLBACK);</div>
+        <div id="response-editor">Click the blue button to run the requests.</div>
     </body>
 </html>

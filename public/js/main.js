@@ -2,6 +2,9 @@ window.addEventListener("load", function () {
     var editor = ace.edit("editor");
     var session = editor.getSession();
 
+    var responseEditor = ace.edit("response-editor");
+    var responseEditorSession = responseEditor.getSession();
+
     /**
      * runCode
      * The function that sends the code to the server side and waits for the response.
@@ -33,6 +36,11 @@ window.addEventListener("load", function () {
     editor.setFontSize(13);
     session.setMode("ace/mode/javascript");
 
+    // response editor
+    responseEditor.setTheme("ace/theme/textmate");
+    responseEditor.setFontSize(13);
+    responseEditorSession.setMode("ace/mode/json");
+
     // auto-complete
     ace.require("ace/ext/language_tools");
     editor.setOptions({
@@ -49,10 +57,7 @@ window.addEventListener("load", function () {
     // click handler
     document.querySelectorAll(".run-code-btn")[0].addEventListener("click", function () {
         runCode(editor.getValue(), function(err, data) {
-            if (err) {
-                return console.error(err);
-            }
-            console.dir(data);
+            responseEditor.setValue(err || data, -1);
         });
     });
 });
