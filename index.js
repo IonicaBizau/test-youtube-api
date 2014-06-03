@@ -63,7 +63,7 @@ Statique
                     if (err) {
                         return Statique.sendRes(res, 400, "text", JSON.stringify(err));
                     }
-                    return Statique.sendRes(res, 400, "text/json", JSON.stringify(data));
+                    return Statique.sendRes(res, 200, "text/json", JSON.stringify(data));
                 };
 
                 formData = formData.replace("_CALLBACK", "__api_run_code_callback");
