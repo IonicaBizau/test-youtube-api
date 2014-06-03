@@ -31,7 +31,12 @@
     </head>
     <body>
         <button class="run-code-btn">Run Code</button>
-        <div id="editor">Youtube.channels.list({
+        <div id="editor">Youtube.authenticate({
+    type: "oauth",
+    token: ACCESS_TOKEN
+});
+
+Youtube.channels.list({
     "part": "id",
     "mySubscribers": true,
     "maxResults": 50
