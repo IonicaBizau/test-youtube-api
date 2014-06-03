@@ -1,6 +1,9 @@
 # NodeJS Youtube API Test
 Test application that tests Youtube API NodeJS module.
 
+## Screenshot
+>![](http://i.imgur.com/2B32IcZ.png)
+
 ## Before you start
 
 1. You need a [Google Account](https://www.google.com/accounts/NewAccount) to access the Google APIs Console, request an API key, and register your application.
@@ -50,22 +53,14 @@ provides a simple text representation of arbitrary data structures. For more inf
 
 2. Click **Next** button.
 2. Select **Web application** option.
-2. Set the **site or hostname** as `localhost:3000`, so the redirect uri will be: `http://localhost:3000/oauth2callback`
+2. Set the **site or hostname** as `localhost:5000`, so the redirect uri will be: `http://localhost:5000/oauth2callback`
 2. Click **Create client ID** button.
 1. Rename `credentials.templ.json` into `credentials.json`.
 2. Open `credentials.json` and replace `yourClientId` with the **client id** and `yourSecretKey` with **client secret** generated in the step 10.
-2. Now you are ready. Start the script and open `http://localhost:3000`.
+2. Now you are ready. Start the script and open `http://localhost:5000`.
 
  ```
  node index.js
  ```
-## TO-DO
 
-3. ~~Use express to have a better way to access the API.~~
-3. ~~More calls to the API with examples.~~
-
-## Examples
- - http://localhost:3000/yt/activities = All activities limited to 50 results.
- - http://localhost:3000/yt/activities/15 = All activities limited  to 15 results.
- - http://localhost:3000/yt/activities/after/YYYY-MM-DDThh:mm:ss.sZ = All activities limited to 50 result that where published after the date expecified.
- - http://localhost:3000/yt/activities/before/YYYY-MM-DDThh:mm:ss.sZ = All activities limited to 50 result that where published before the date expecified.
+Then open `localhost:5000` in your browser and start testing the module.
