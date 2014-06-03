@@ -16,17 +16,16 @@ window.addEventListener("load", function () {
         var xhr = new XMLHttpRequest();
         var url = "/api/run_code";
 
-        link.open(post, url);
-        link.setRequestHeader("content-type", "text/json; charset=utf-8");
-        link.onreadystatechange = function() {
-            if (link.readyState == 4) {
-                var err = link.status < 400 ? null : (link.responseText || "ERR");
-                callback(err, link.responseText);
-            }
+        xhr.open("post", url);
+        xhr.setRequestHeader("content-type", "text/json; charset=utf-8");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState !== 4) { return; }
+            var err = xhr.status < 400 ? null : (xhr.responseText || "ERR");
+            callback(err, xhr.responseText);
         };
 
         // send data
-        link.send(code);
+        xhr.send(code);
     }
 
     //setup editor
@@ -50,7 +49,10 @@ window.addEventListener("load", function () {
     // click handler
     document.querySelectorAll(".run-code-btn")[0].addEventListener("click", function () {
         runCode(editor.getValue(), function(err, data) {
-            console.log(err || data);
+            if (err) {
+                return console.error(err);
+            }
+            console.dir(data);
         });
     });
 });

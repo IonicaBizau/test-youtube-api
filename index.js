@@ -39,6 +39,41 @@ Statique
             res.end();
             return;
         }
+      , "/api/run_code": function (req, res) {
+
+            var formData = ""
+              , error = ""
+              ;
+
+            req.on("data", function (data) {
+                formData += data;
+            });
+
+            req.on("error", function (data) {
+                error += data;
+            });
+
+            req.on("end", function (data) {
+
+                if (error) {
+                    return Statique.sendRes(res, 400, "text/html", error);
+                }
+
+                global.__api_run_code_callback = function (err, data) {
+                    if (err) {
+                        return Statique.sendRes(res, 400, "text", JSON.stringify(err));
+                    }
+                    return Statique.sendRes(res, 400, "text/json", JSON.stringify(data));
+                };
+
+                formData = formData.replace("_CALLBACK", "__api_run_code_callback");
+                try {
+                    eval(formData);
+                } catch (e) {
+                    return Statique.sendRes(res, 400, "text", e.message);
+                }
+            });
+        }
       , "/oauth2callback": function (req, res) {
             var url = req.url;
 
