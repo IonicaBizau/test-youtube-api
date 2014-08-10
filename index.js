@@ -1,15 +1,17 @@
+// Dependencies
 var Youtube = require("youtube-api")
   , Http = require("http")
   , Statique = require ("statique")
-  , Http = require('http')
+  , Http = require("http")
   , Request = require("request")
   , credentials = require("./credentials")
   , path = require("path")
   ;
 
+// Set ACCESS_TOKEN global as undefined
 global.ACCESS_TOKEN = undefined;
 
-// credentials
+// Credentials
 credentials.scope = "https://www.googleapis.com/auth/youtube";
 credentials.response_type = "code";
 credentials.access_type = "offline";
@@ -21,6 +23,8 @@ Statique
         "/": function rootPage(req, res) {
 
             var authType = credentials.auth_uri ? "oauth" : "jwt";
+
+            // Handle JWT authentication
             if (authType === "jwt" && !ACCESS_TOKEN) {
                 ACCESS_TOKEN = true;
                 return Youtube.authenticate({
@@ -32,7 +36,6 @@ Statique
                   , scopes: [credentials.scope]
                 }).authorize(function (err, data) {
                     if (err) { return Statique.error(req, res, 500, err.toString()); }
-                    console.log(err, data);
                     rootPage(req, res);
                 });
             }
@@ -119,7 +122,7 @@ Statique
 
             var options = {
                 url: "https://accounts.google.com/o/oauth2/token",
-                headers: {'content-type' : 'application/x-www-form-urlencoded'},
+                headers: {"content-type" : "application/x-www-form-urlencoded"},
                 method: "POST",
                 body: formData
             };
@@ -159,11 +162,7 @@ Statique
     })
   ;
 
-// create server
-Http.createServer(function(req, res) {
-    Statique.serve (req, res);
-}).listen(5000);
-
-// output
+// Create server
+Http.createServer(Statique.serve).listen(5000);
 console.log("Open: http://localhost:5000");
 
