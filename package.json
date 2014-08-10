@@ -10,7 +10,7 @@
   "main": "index.js",
   "dependencies": {
     "request": "^2.36.0",
-    "youtube-api": "^0.2.2",
+    "youtube-api": "^0.3.0",
     "statique": "^0.3.0"
   },
   "devDependencies": {},
