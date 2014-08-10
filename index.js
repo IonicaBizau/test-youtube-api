@@ -4,6 +4,7 @@ var Youtube = require("youtube-api")
   , Http = require('http')
   , Request = require("request")
   , credentials = require("./credentials")
+  , path = require("path")
   ;
 
 global.ACCESS_TOKEN = undefined;
@@ -17,7 +18,25 @@ credentials.access_type = "offline";
 Statique
     .server({root: __dirname + "/public"})
     .setRoutes({
-        "/": function (req, res) {
+        "/": function rootPage(req, res) {
+
+            var authType = credentials.auth_uri ? "oauth" : "jwt";
+            if (authType === "jwt" && !ACCESS_TOKEN) {
+                ACCESS_TOKEN = true;
+                return Youtube.authenticate({
+                    type: "jwt"
+                  , email: credentials.email
+                  , keyFile: path.normalize(credentials.keyFile)
+                  , key: credentials.key
+                  , subject: credentials.subject
+                  , scopes: [credentials.scope]
+                }).authorize(function (err, data) {
+                    if (err) { return Statique.error(req, res, 500, err.toString()); }
+                    console.log(err, data);
+                    rootPage(req, res);
+                });
+            }
+
             if (ACCESS_TOKEN) {
                 return Statique.readFile("/html/index.html", function (err, content) {
                     Statique.sendRes(res, 400, "text/html", content);
@@ -123,6 +142,11 @@ Statique
                 // success
                 if (body.access_token) {
                     ACCESS_TOKEN = body.access_token;
+                    Youtube.authenticate({
+                        type: "oauth",
+                        token: ACCESS_TOKEN
+                    });
+
                     res.writeHead(302, {
                         "Location": "/"
                     });
