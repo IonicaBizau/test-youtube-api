@@ -25,7 +25,7 @@ provides a simple text representation of arbitrary data structures. For more inf
 2. Download this repository using:
 
  ```
- git clone http://github.com/brilvio/test-youtube-api
+ git clone http://github.com/IonicaBizau/test-youtube-api
  ```
 
 2. Enter in the downloaded directory and run `npm install`:
@@ -39,11 +39,11 @@ provides a simple text representation of arbitrary data structures. For more inf
 
 2. Select **`API Access`** option, like in the screen shot:
 
- >![](https://raw.github.com/brilvio/test-youtube-api/master/images/1.png)
+ >![](https://raw.github.com/IonicaBizau/test-youtube-api/master/images/1.png)
 
 2. Then create an **OAuth 2.0 client ID**.
 
- >![](https://raw.github.com/brilvio/test-youtube-api/master/images/2.png)
+ >![](https://raw.github.com/IonicaBizau/test-youtube-api/master/images/2.png)
 
 2. Complete the required fields:
 
