@@ -88,7 +88,7 @@ Statique
                     return Statique.sendRes(res, 200, "text/json", JSON.stringify(data, null, 2));
                 };
 
-                formData = formData.replace("_CALLBACK", "__api_run_code_callback");
+                formData = formData.replace(/_CALLBACK/g, "__api_run_code_callback");
                 try {
                     eval(formData);
                 } catch (e) {
