@@ -15,7 +15,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "node index"
+    "start": "node index"
   },
   "repository": {
     "type": "git",
