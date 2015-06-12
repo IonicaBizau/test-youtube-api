@@ -13,9 +13,14 @@
 <!-- * * * Thanks! * * *                                                    -->
 <!---------------------------------------------------------------------------->
 
-# test-youtube-api [![Donate now][donate-now]][paypal-donations]
+# YouTube API Test Application
 
 Test Youtube API NodeJS module
+
+This is an example application how to use the [`youtube-api`](https://github.com/IonicaBizau/youtube-api)
+library and explore the YouTube API resources.
+
+> ![](http://i.imgur.com/2B32IcZ.png)
 
 ## Before you start
 
@@ -68,8 +73,6 @@ OK, at this step you have the credentials (in your Google app). Now you have to 
  1. Rename `credentials.templ.json` into `credentials.json`.
  2. Open `credentials.json` and replace `yourClientId` with the **client id** and `yourSecretKey` with **client secret** generated previously.
  2. Now you are ready. Start the script (`npm start`) and open `http://localhost:5000`.
-
-## Documentation
 
 ## How to contribute
 Have an idea? Found a bug? See [how to contribute][contributing].
