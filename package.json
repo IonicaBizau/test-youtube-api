@@ -1,6 +1,6 @@
 {
   "name": "test-youtube-api",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Test Youtube API NodeJS module",
   "author": "Ionică Bizău",
   "contributors": [
