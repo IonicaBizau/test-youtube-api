@@ -13,7 +13,7 @@
 <!-- * * * Thanks! * * *                                                    -->
 <!---------------------------------------------------------------------------->
 
-# YouTube API Test Application
+# YouTube API Test Application [![Donate now][donate-now]][paypal-donations]
 
 Test Youtube API NodeJS module
 
