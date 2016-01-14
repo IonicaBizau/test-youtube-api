@@ -1,6 +1,6 @@
-# YouTube API Test Application [![Support this project][donate-now]][paypal-donations]
+# YouTube API Test Application [![PayPal](https://img.shields.io/badge/%24-paypal-f39c12.svg)][paypal-donations] [![Version](https://img.shields.io/npm/v/test-youtube-api.svg)](https://www.npmjs.com/package/test-youtube-api) [![Downloads](https://img.shields.io/npm/dt/test-youtube-api.svg)](https://www.npmjs.com/package/test-youtube-api) [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/johnnyb?utm_source=github&utm_medium=button&utm_term=johnnyb&utm_campaign=github)
 
-Test Youtube API NodeJS module
+> Test Youtube API NodeJS module
 
 This is an example application how to use the [`youtube-api`](https://github.com/IonicaBizau/youtube-api) library and explore the YouTube API resources.
 
