@@ -1,5 +1,5 @@
-*~
 *.swp
-/node_modules
+*.swo
+*~
 *.log
-credentials.json
+node_modules
