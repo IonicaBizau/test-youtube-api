@@ -1,6 +1,6 @@
 {
   "name": "test-youtube-api",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Test Youtube API NodeJS module",
   "author": "Ionică Bizău <bizauionica@gmail.com> (http://ionicabizau.net)",
   "contributors": [
@@ -148,5 +148,16 @@
         }
       ]
     ]
-  }
+  },
+  "files": [
+    "bin/",
+    "app/",
+    "lib/",
+    "dist/",
+    "src/",
+    "resources/",
+    "menu/",
+    "cli.js",
+    "index.js"
+  ]
 }
