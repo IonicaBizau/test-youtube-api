@@ -16,19 +16,25 @@ window.addEventListener("load", function () {
      * @return {XMLHttpRequest} The XHR that is made.
      */
     function runCode (code, callback) {
-        var xhr = new XMLHttpRequest();
-        var url = "/api/run_code";
-
-        xhr.open("post", url);
-        xhr.setRequestHeader("content-type", "text/json; charset=utf-8");
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState !== 4) { return; }
-            var err = xhr.status < 400 ? null : (xhr.responseText || "ERR");
-            callback(err, xhr.responseText);
-        };
-
-        // send data
-        xhr.send(code);
+        var res = null;
+	fetch("/api/run_code", {
+	    method: "POST",
+	    headers: {
+		"Accept": "application/json"
+	      , "Content-Type": "application/json"
+	    },
+	    body: JSON.stringify({
+                code: code
+	    })
+	}).then(function (_res) {
+            res = _res;
+            return _res.text();
+        }).then(function (text) {
+            if (res.status > 400) {
+                callback(text);
+            }
+            callback(null, text);
+        });
     }
 
     //setup editor

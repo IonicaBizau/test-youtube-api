@@ -9,9 +9,12 @@
   ],
   "main": "index.js",
   "dependencies": {
+    "lien": "^1.0.2",
+    "opn": "^4.0.1",
+    "r-json": "^1.2.2",
     "request": "^2.36.0",
-    "youtube-api": "1.0.0",
-    "statique": "^0.3.0"
+    "try-async": "^1.1.1",
+    "youtube-api": "^2.0.1"
   },
   "devDependencies": {},
   "scripts": {
