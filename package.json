@@ -1,6 +1,6 @@
 {
   "name": "test-youtube-api",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Test Youtube API NodeJS module",
   "author": "Ionică Bizău <bizauionica@gmail.com> (http://ionicabizau.net)",
   "contributors": [
@@ -49,9 +49,7 @@
           "You need a [Google Account](https://www.google.com/accounts/NewAccount) to access the Google APIs Console, request an API key, and register your application.",
           "[Register your application](https://console.developers.google.com/project) with Google so that it can submit API requests:",
           [
-            {
-              "p": "After registering your application, select **YouTube Data API** as one of the services that your application uses."
-            },
+            "After registering your application, select **YouTube Data API** as one of the services that your application uses.",
             {
               "ul": [
                 "Go to the [APIs Console](https://console.developers.google.com/project) and select the project that you just registered.",
@@ -74,9 +72,7 @@
       {
         "ol": [
           [
-            {
-              "p": "Download this repository by running:"
-            },
+            "Download this repository by running:",
             {
               "code": {
                 "language": "sh",
@@ -85,9 +81,7 @@
             }
           ],
           [
-            {
-              "p": "Enter in the downloaded directory and run `npm install`:"
-            },
+            "Enter in the downloaded directory and run `npm install`:",
             {
               "code": {
                 "language": "sh",
@@ -98,11 +92,9 @@
               }
             }
           ],
-          "Go back in your Google app and click again on *APIs & auth& and then select *Credentials*.",
+          "Go back in your Google app and click again on *APIs & auth* and then select *Credentials*.",
           [
-            {
-              "p": "Click <kbd>Create new Client ID</kbd>. This will create new OAuth 2.0 credentials:"
-            },
+            "Click <kbd>Create new Client ID</kbd>. This will create new OAuth 2.0 credentials:",
             {
               "ul": [
                 "Select *Web application*",
@@ -119,9 +111,7 @@
                   }
                 ],
                 [
-                  {
-                    "p": "Now you will have to set the auth urls. This test application uses the following urls:"
-                  },
+                  "Now you will have to set the auth urls. This test application uses the following urls:",
                   {
                     "ul": [
                       "Authorized JavaScript origins: `http://localhost:5000/` (paste it in the first textarea)",
@@ -136,9 +126,7 @@
         ]
       },
       [
-        {
-          "p": "OK, at this step you have the credentials (in your Google app). Now you have to use them in this test application:"
-        },
+        "OK, at this step you have the credentials (in your Google app). Now you have to use them in this test application:",
         {
           "ol": [
             "Rename `credentials.templ.json` into `credentials.json`.",
