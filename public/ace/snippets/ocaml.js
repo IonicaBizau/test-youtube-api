@@ -1,7 +1,7 @@
-define('ace/snippets/ocaml', ['require', 'exports', 'module' ], function(require, exports, module) {
+'use strict';
 
+define('ace/snippets/ocaml', ['require', 'exports', 'module'], function (require, exports, module) {
 
-exports.snippetText = "";
-exports.scope = "ocaml";
-
+  exports.snippetText = "";
+  exports.scope = "ocaml";
 });

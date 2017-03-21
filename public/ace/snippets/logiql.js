@@ -1,7 +1,7 @@
-define('ace/snippets/logiql', ['require', 'exports', 'module' ], function(require, exports, module) {
+'use strict';
 
+define('ace/snippets/logiql', ['require', 'exports', 'module'], function (require, exports, module) {
 
-exports.snippetText = "";
-exports.scope = "logiql";
-
+  exports.snippetText = "";
+  exports.scope = "logiql";
 });

@@ -1,7 +1,8 @@
-define('ace/snippets/java', ['require', 'exports', 'module' ], function(require, exports, module) {
+'use strict';
 
+define('ace/snippets/java', ['require', 'exports', 'module'], function (require, exports, module) {
 
-exports.snippetText = "## Access Modifiers\n\
+	exports.snippetText = "## Access Modifiers\n\
 snippet po\n\
 	protected\n\
 snippet pu\n\
@@ -242,6 +243,5 @@ snippet ru\n\
 snippet unless\n\
 	(unless=${1:param});${2}\n\
 ";
-exports.scope = "java";
-
+	exports.scope = "java";
 });

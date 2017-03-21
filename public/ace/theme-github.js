@@ -1,3 +1,5 @@
+'use strict';
+
 /* ***** BEGIN LICENSE BLOCK *****
  * Distributed under the BSD license:
  *
@@ -28,11 +30,11 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/theme/github', ['require', 'exports', 'module' , 'ace/lib/dom'], function(require, exports, module) {
+define('ace/theme/github', ['require', 'exports', 'module', 'ace/lib/dom'], function (require, exports, module) {
 
-exports.isDark = false;
-exports.cssClass = "ace-github";
-exports.cssText = "/* CSS style content from github's default pygments highlighter template.\
+  exports.isDark = false;
+  exports.cssClass = "ace-github";
+  exports.cssText = "/* CSS style content from github's default pygments highlighter template.\
 Cursor and selection styles from textmate.css. */\
 .ace-github .ace_gutter {\
 background: #e8e8e8;\
@@ -126,6 +128,6 @@ background: #e8e8e8;\
 background: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==\") right repeat-y;\
 }";
 
-    var dom = require("../lib/dom");
-    dom.importCssString(exports.cssText, exports.cssClass);
+  var dom = require("../lib/dom");
+  dom.importCssString(exports.cssText, exports.cssClass);
 });

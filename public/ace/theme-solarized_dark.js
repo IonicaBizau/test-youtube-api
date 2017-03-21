@@ -1,3 +1,5 @@
+'use strict';
+
 /* ***** BEGIN LICENSE BLOCK *****
  * Distributed under the BSD license:
  *
@@ -28,11 +30,11 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/theme/solarized_dark', ['require', 'exports', 'module' , 'ace/lib/dom'], function(require, exports, module) {
+define('ace/theme/solarized_dark', ['require', 'exports', 'module', 'ace/lib/dom'], function (require, exports, module) {
 
-exports.isDark = true;
-exports.cssClass = "ace-solarized-dark";
-exports.cssText = ".ace-solarized-dark .ace_gutter {\
+  exports.isDark = true;
+  exports.cssClass = "ace-solarized-dark";
+  exports.cssText = ".ace-solarized-dark .ace_gutter {\
 background: #01313f;\
 color: #d0edf7\
 }\
@@ -114,6 +116,6 @@ color: #657B83\
 background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWNg0Db1ZVCxc/sPAAd4AlUHlLenAAAAAElFTkSuQmCC) right repeat-y\
 }";
 
-var dom = require("../lib/dom");
-dom.importCssString(exports.cssText, exports.cssClass);
+  var dom = require("../lib/dom");
+  dom.importCssString(exports.cssText, exports.cssClass);
 });

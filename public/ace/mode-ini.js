@@ -1,3 +1,5 @@
+'use strict';
+
 /* ***** BEGIN LICENSE BLOCK *****
  * Distributed under the BSD license:
  *
@@ -28,158 +30,149 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/mode/ini', ['require', 'exports', 'module' , 'ace/lib/oop', 'ace/mode/text', 'ace/tokenizer', 'ace/mode/ini_highlight_rules', 'ace/mode/folding/ini'], function(require, exports, module) {
+define('ace/mode/ini', ['require', 'exports', 'module', 'ace/lib/oop', 'ace/mode/text', 'ace/tokenizer', 'ace/mode/ini_highlight_rules', 'ace/mode/folding/ini'], function (require, exports, module) {
 
+    var oop = require("../lib/oop");
+    var TextMode = require("./text").Mode;
+    var Tokenizer = require("../tokenizer").Tokenizer;
+    var IniHighlightRules = require("./ini_highlight_rules").IniHighlightRules;
+    var FoldMode = require("./folding/ini").FoldMode;
 
-var oop = require("../lib/oop");
-var TextMode = require("./text").Mode;
-var Tokenizer = require("../tokenizer").Tokenizer;
-var IniHighlightRules = require("./ini_highlight_rules").IniHighlightRules;
-var FoldMode = require("./folding/ini").FoldMode;
+    var Mode = function Mode() {
+        this.HighlightRules = IniHighlightRules;
+        this.foldingRules = new FoldMode();
+    };
+    oop.inherits(Mode, TextMode);
 
-var Mode = function() {
-    this.HighlightRules = IniHighlightRules;
-    this.foldingRules = new FoldMode();
-};
-oop.inherits(Mode, TextMode);
+    (function () {
+        this.lineCommentStart = ";";
+        this.blockComment = { start: "/*", end: "*/" };
+        this.$id = "ace/mode/ini";
+    }).call(Mode.prototype);
 
-(function() {
-    this.lineCommentStart = ";";
-    this.blockComment = {start: "/*", end: "*/"};
-    this.$id = "ace/mode/ini";
-}).call(Mode.prototype);
-
-exports.Mode = Mode;
+    exports.Mode = Mode;
 });
 
-define('ace/mode/ini_highlight_rules', ['require', 'exports', 'module' , 'ace/lib/oop', 'ace/mode/text_highlight_rules'], function(require, exports, module) {
+define('ace/mode/ini_highlight_rules', ['require', 'exports', 'module', 'ace/lib/oop', 'ace/mode/text_highlight_rules'], function (require, exports, module) {
 
+    var oop = require("../lib/oop");
+    var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
 
-var oop = require("../lib/oop");
-var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
+    var escapeRe = "\\\\(?:[\\\\0abtrn;#=:]|x[a-fA-F\\d]{4})";
 
-var escapeRe = "\\\\(?:[\\\\0abtrn;#=:]|x[a-fA-F\\d]{4})";
-
-var IniHighlightRules = function() {
-    this.$rules = {
-        start: [{
-            token: 'punctuation.definition.comment.ini',
-            regex: '#.*',
-            push_: [{
-                token: 'comment.line.number-sign.ini',
-                regex: '$|^',
-                next: 'pop'
+    var IniHighlightRules = function IniHighlightRules() {
+        this.$rules = {
+            start: [{
+                token: 'punctuation.definition.comment.ini',
+                regex: '#.*',
+                push_: [{
+                    token: 'comment.line.number-sign.ini',
+                    regex: '$|^',
+                    next: 'pop'
+                }, {
+                    defaultToken: 'comment.line.number-sign.ini'
+                }]
             }, {
-                defaultToken: 'comment.line.number-sign.ini'
-            }]
-        }, {
-            token: 'punctuation.definition.comment.ini',
-            regex: ';.*',
-            push_: [{
-                token: 'comment.line.semicolon.ini',
-                regex: '$|^',
-                next: 'pop'
+                token: 'punctuation.definition.comment.ini',
+                regex: ';.*',
+                push_: [{
+                    token: 'comment.line.semicolon.ini',
+                    regex: '$|^',
+                    next: 'pop'
+                }, {
+                    defaultToken: 'comment.line.semicolon.ini'
+                }]
             }, {
-                defaultToken: 'comment.line.semicolon.ini'
-            }]
-        }, {
-            token: ['keyword.other.definition.ini', 'text', 'punctuation.separator.key-value.ini'],
-            regex: '\\b([a-zA-Z0-9_.-]+)\\b(\\s*)(=)'
-        }, {
-            token: ['punctuation.definition.entity.ini', 'constant.section.group-title.ini', 'punctuation.definition.entity.ini'],
-            regex: '^(\\[)(.*?)(\\])'
-        }, {
-            token: 'punctuation.definition.string.begin.ini',
-            regex: "'",
-            push: [{
-                token: 'punctuation.definition.string.end.ini',
+                token: ['keyword.other.definition.ini', 'text', 'punctuation.separator.key-value.ini'],
+                regex: '\\b([a-zA-Z0-9_.-]+)\\b(\\s*)(=)'
+            }, {
+                token: ['punctuation.definition.entity.ini', 'constant.section.group-title.ini', 'punctuation.definition.entity.ini'],
+                regex: '^(\\[)(.*?)(\\])'
+            }, {
+                token: 'punctuation.definition.string.begin.ini',
                 regex: "'",
-                next: 'pop'
+                push: [{
+                    token: 'punctuation.definition.string.end.ini',
+                    regex: "'",
+                    next: 'pop'
+                }, {
+                    token: "constant.language.escape",
+                    regex: escapeRe
+                }, {
+                    defaultToken: 'string.quoted.single.ini'
+                }]
             }, {
-                token: "constant.language.escape",
-                regex: escapeRe
-            }, {
-                defaultToken: 'string.quoted.single.ini'
-            }]
-        }, {
-            token: 'punctuation.definition.string.begin.ini',
-            regex: '"',
-            push: [{
-                token: "constant.language.escape",
-                regex: escapeRe
-            }, {
-                token: 'punctuation.definition.string.end.ini',
+                token: 'punctuation.definition.string.begin.ini',
                 regex: '"',
-                next: 'pop'
-            }, {
-                defaultToken: 'string.quoted.double.ini'
+                push: [{
+                    token: "constant.language.escape",
+                    regex: escapeRe
+                }, {
+                    token: 'punctuation.definition.string.end.ini',
+                    regex: '"',
+                    next: 'pop'
+                }, {
+                    defaultToken: 'string.quoted.double.ini'
+                }]
             }]
-        }]
+        };
+
+        this.normalizeRules();
     };
 
-    this.normalizeRules();
-};
+    IniHighlightRules.metaData = {
+        fileTypes: ['ini', 'conf'],
+        keyEquivalent: '^~I',
+        name: 'Ini',
+        scopeName: 'source.ini'
+    };
 
-IniHighlightRules.metaData = {
-    fileTypes: ['ini', 'conf'],
-    keyEquivalent: '^~I',
-    name: 'Ini',
-    scopeName: 'source.ini'
-};
+    oop.inherits(IniHighlightRules, TextHighlightRules);
 
-
-oop.inherits(IniHighlightRules, TextHighlightRules);
-
-exports.IniHighlightRules = IniHighlightRules;
+    exports.IniHighlightRules = IniHighlightRules;
 });
 
-define('ace/mode/folding/ini', ['require', 'exports', 'module' , 'ace/lib/oop', 'ace/range', 'ace/mode/folding/fold_mode'], function(require, exports, module) {
+define('ace/mode/folding/ini', ['require', 'exports', 'module', 'ace/lib/oop', 'ace/range', 'ace/mode/folding/fold_mode'], function (require, exports, module) {
 
+    var oop = require("../../lib/oop");
+    var Range = require("../../range").Range;
+    var BaseFoldMode = require("./fold_mode").FoldMode;
 
-var oop = require("../../lib/oop");
-var Range = require("../../range").Range;
-var BaseFoldMode = require("./fold_mode").FoldMode;
+    var FoldMode = exports.FoldMode = function () {};
+    oop.inherits(FoldMode, BaseFoldMode);
 
-var FoldMode = exports.FoldMode = function() {
-};
-oop.inherits(FoldMode, BaseFoldMode);
+    (function () {
 
-(function() {
+        this.foldingStartMarker = /^\s*\[([^\])]*)]\s*(?:$|[;#])/;
 
-    this.foldingStartMarker = /^\s*\[([^\])]*)]\s*(?:$|[;#])/;
+        this.getFoldWidgetRange = function (session, foldStyle, row) {
+            var re = this.foldingStartMarker;
+            var line = session.getLine(row);
 
-    this.getFoldWidgetRange = function(session, foldStyle, row) {
-        var re = this.foldingStartMarker;
-        var line = session.getLine(row);
-        
-        var m = line.match(re);
-        
-        if (!m) return;
-        
-        var startName = m[1] + ".";
-        
-        var startColumn = line.length;
-        var maxRow = session.getLength();
-        var startRow = row;
-        var endRow = row;
+            var m = line.match(re);
 
-        while (++row < maxRow) {
-            line = session.getLine(row);
-            if (/^\s*$/.test(line))
-                continue;
-            m = line.match(re);
-            if (m && m[1].lastIndexOf(startName, 0) !== 0)
-                break;
+            if (!m) return;
 
-            endRow = row;
-        }
+            var startName = m[1] + ".";
 
-        if (endRow > startRow) {
-            var endColumn = session.getLine(endRow).length;
-            return new Range(startRow, startColumn, endRow, endColumn);
-        }
-    };
+            var startColumn = line.length;
+            var maxRow = session.getLength();
+            var startRow = row;
+            var endRow = row;
 
-}).call(FoldMode.prototype);
+            while (++row < maxRow) {
+                line = session.getLine(row);
+                if (/^\s*$/.test(line)) continue;
+                m = line.match(re);
+                if (m && m[1].lastIndexOf(startName, 0) !== 0) break;
 
+                endRow = row;
+            }
+
+            if (endRow > startRow) {
+                var endColumn = session.getLine(endRow).length;
+                return new Range(startRow, startColumn, endRow, endColumn);
+            }
+        };
+    }).call(FoldMode.prototype);
 });

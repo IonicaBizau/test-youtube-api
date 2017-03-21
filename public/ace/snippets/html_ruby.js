@@ -1,7 +1,7 @@
-define('ace/snippets/html_ruby', ['require', 'exports', 'module' ], function(require, exports, module) {
+'use strict';
 
+define('ace/snippets/html_ruby', ['require', 'exports', 'module'], function (require, exports, module) {
 
-exports.snippetText = "";
-exports.scope = "html_ruby";
-
+  exports.snippetText = "";
+  exports.scope = "html_ruby";
 });

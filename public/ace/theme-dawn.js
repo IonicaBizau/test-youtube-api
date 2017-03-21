@@ -1,3 +1,5 @@
+'use strict';
+
 /* ***** BEGIN LICENSE BLOCK *****
  * Distributed under the BSD license:
  *
@@ -28,11 +30,11 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/theme/dawn', ['require', 'exports', 'module' , 'ace/lib/dom'], function(require, exports, module) {
+define('ace/theme/dawn', ['require', 'exports', 'module', 'ace/lib/dom'], function (require, exports, module) {
 
-exports.isDark = false;
-exports.cssClass = "ace-dawn";
-exports.cssText = ".ace-dawn .ace_gutter {\
+  exports.isDark = false;
+  exports.cssClass = "ace-dawn";
+  exports.cssText = ".ace-dawn .ace_gutter {\
 background: #ebebeb;\
 color: #333\
 }\
@@ -134,6 +136,6 @@ color: #234A97\
 background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWNgYGBgYLh/5+x/AAizA4hxNNsZAAAAAElFTkSuQmCC) right repeat-y\
 }";
 
-var dom = require("../lib/dom");
-dom.importCssString(exports.cssText, exports.cssClass);
+  var dom = require("../lib/dom");
+  dom.importCssString(exports.cssText, exports.cssClass);
 });

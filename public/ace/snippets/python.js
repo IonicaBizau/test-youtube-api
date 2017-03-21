@@ -1,7 +1,8 @@
-define('ace/snippets/python', ['require', 'exports', 'module' ], function(require, exports, module) {
+'use strict';
 
+define('ace/snippets/python', ['require', 'exports', 'module'], function (require, exports, module) {
 
-exports.snippetText = "snippet #!\n\
+	exports.snippetText = "snippet #!\n\
 	#!/usr/bin/env python\n\
 snippet imp\n\
 	import ${1:module}\n\
@@ -160,6 +161,5 @@ snippet getopt\n\
 		elif option in (\"-v\", \"--verbose\"):\n\
 			verbose = argument\n\
 ";
-exports.scope = "python";
-
+	exports.scope = "python";
 });

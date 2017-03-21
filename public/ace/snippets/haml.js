@@ -1,7 +1,8 @@
-define('ace/snippets/haml', ['require', 'exports', 'module' ], function(require, exports, module) {
+'use strict';
 
+define('ace/snippets/haml', ['require', 'exports', 'module'], function (require, exports, module) {
 
-exports.snippetText = "snippet t\n\
+	exports.snippetText = "snippet t\n\
 	%table\n\
 		%tr\n\
 			%th\n\
@@ -22,6 +23,5 @@ snippet =rpc\n\
 	= render :partial => '${1:partial}', :collection => @$1\n\
 \n\
 ";
-exports.scope = "haml";
-
+	exports.scope = "haml";
 });

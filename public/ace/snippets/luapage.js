@@ -1,7 +1,7 @@
-define('ace/snippets/luapage', ['require', 'exports', 'module' ], function(require, exports, module) {
+'use strict';
 
+define('ace/snippets/luapage', ['require', 'exports', 'module'], function (require, exports, module) {
 
-exports.snippetText = "";
-exports.scope = "luapage";
-
+  exports.snippetText = "";
+  exports.scope = "luapage";
 });

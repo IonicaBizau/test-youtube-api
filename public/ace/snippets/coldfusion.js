@@ -1,7 +1,7 @@
-define('ace/snippets/coldfusion', ['require', 'exports', 'module' ], function(require, exports, module) {
+'use strict';
 
+define('ace/snippets/coldfusion', ['require', 'exports', 'module'], function (require, exports, module) {
 
-exports.snippetText = "";
-exports.scope = "coldfusion";
-
+  exports.snippetText = "";
+  exports.scope = "coldfusion";
 });

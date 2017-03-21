@@ -1,3 +1,5 @@
+'use strict';
+
 /* ***** BEGIN LICENSE BLOCK *****
  * Distributed under the BSD license:
  *
@@ -28,11 +30,11 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/theme/terminal', ['require', 'exports', 'module' , 'ace/lib/dom'], function(require, exports, module) {
+define('ace/theme/terminal', ['require', 'exports', 'module', 'ace/lib/dom'], function (require, exports, module) {
 
-exports.isDark = true;
-exports.cssClass = "ace-terminal-theme";
-exports.cssText = ".ace-terminal-theme .ace_gutter {\
+  exports.isDark = true;
+  exports.cssClass = "ace-terminal-theme";
+  exports.cssText = ".ace-terminal-theme .ace_gutter {\
 background: #1a0005;\
 color: steelblue\
 }\
@@ -140,6 +142,6 @@ background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgb
 }\
 ";
 
-var dom = require("../lib/dom");
-dom.importCssString(exports.cssText, exports.cssClass);
+  var dom = require("../lib/dom");
+  dom.importCssString(exports.cssText, exports.cssClass);
 });

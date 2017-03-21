@@ -1,7 +1,7 @@
-define('ace/snippets/d', ['require', 'exports', 'module' ], function(require, exports, module) {
+'use strict';
 
+define('ace/snippets/d', ['require', 'exports', 'module'], function (require, exports, module) {
 
-exports.snippetText = "";
-exports.scope = "d";
-
+  exports.snippetText = "";
+  exports.scope = "d";
 });

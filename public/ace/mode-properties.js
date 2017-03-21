@@ -1,3 +1,5 @@
+'use strict';
+
 /* ***** BEGIN LICENSE BLOCK *****
  * Distributed under the BSD license:
  *
@@ -28,77 +30,69 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/mode/properties', ['require', 'exports', 'module' , 'ace/lib/oop', 'ace/mode/text', 'ace/tokenizer', 'ace/mode/properties_highlight_rules'], function(require, exports, module) {
+define('ace/mode/properties', ['require', 'exports', 'module', 'ace/lib/oop', 'ace/mode/text', 'ace/tokenizer', 'ace/mode/properties_highlight_rules'], function (require, exports, module) {
 
+    var oop = require("../lib/oop");
+    var TextMode = require("./text").Mode;
+    var Tokenizer = require("../tokenizer").Tokenizer;
+    var PropertiesHighlightRules = require("./properties_highlight_rules").PropertiesHighlightRules;
 
-var oop = require("../lib/oop");
-var TextMode = require("./text").Mode;
-var Tokenizer = require("../tokenizer").Tokenizer;
-var PropertiesHighlightRules = require("./properties_highlight_rules").PropertiesHighlightRules;
+    var Mode = function Mode() {
+        this.HighlightRules = PropertiesHighlightRules;
+    };
+    oop.inherits(Mode, TextMode);
 
-var Mode = function() {
-    this.HighlightRules = PropertiesHighlightRules;
-};
-oop.inherits(Mode, TextMode);
+    (function () {
+        this.$id = "ace/mode/properties";
+    }).call(Mode.prototype);
 
-(function() {
-    this.$id = "ace/mode/properties";
-}).call(Mode.prototype);
-
-exports.Mode = Mode;
+    exports.Mode = Mode;
 });
 
-define('ace/mode/properties_highlight_rules', ['require', 'exports', 'module' , 'ace/lib/oop', 'ace/mode/text_highlight_rules'], function(require, exports, module) {
+define('ace/mode/properties_highlight_rules', ['require', 'exports', 'module', 'ace/lib/oop', 'ace/mode/text_highlight_rules'], function (require, exports, module) {
 
+    var oop = require("../lib/oop");
+    var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
 
-var oop = require("../lib/oop");
-var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
+    var PropertiesHighlightRules = function PropertiesHighlightRules() {
 
-var PropertiesHighlightRules = function() {
+        var escapeRe = /\\u[0-9a-fA-F]{4}|\\/;
 
-    var escapeRe = /\\u[0-9a-fA-F]{4}|\\/;
-
-    this.$rules = {
-        "start" : [
-            {
-                token : "comment",
-                regex : /[!#].*$/
+        this.$rules = {
+            "start": [{
+                token: "comment",
+                regex: /[!#].*$/
             }, {
-                token : "keyword",
-                regex : /[=:]$/
+                token: "keyword",
+                regex: /[=:]$/
             }, {
-                token : "keyword",
-                regex : /[=:]/,
-                next  : "value"
+                token: "keyword",
+                regex: /[=:]/,
+                next: "value"
             }, {
-                token : "constant.language.escape",
-                regex : escapeRe
+                token: "constant.language.escape",
+                regex: escapeRe
             }, {
                 defaultToken: "variable"
-            }
-        ],
-        "value" : [
-            {
-                regex : /\\$/,
-                token : "string",
-                next : "value"
+            }],
+            "value": [{
+                regex: /\\$/,
+                token: "string",
+                next: "value"
             }, {
-                regex : /$/,
-                token : "string",
-                next : "start"
+                regex: /$/,
+                token: "string",
+                next: "start"
             }, {
-                token : "constant.language.escape",
-                regex : escapeRe
+                token: "constant.language.escape",
+                regex: escapeRe
             }, {
                 defaultToken: "string"
-            }
-        ]
+            }]
+        };
     };
 
-};
+    oop.inherits(PropertiesHighlightRules, TextHighlightRules);
 
-oop.inherits(PropertiesHighlightRules, TextHighlightRules);
-
-exports.PropertiesHighlightRules = PropertiesHighlightRules;
+    exports.PropertiesHighlightRules = PropertiesHighlightRules;
 });
-

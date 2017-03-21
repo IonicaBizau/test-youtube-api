@@ -1,7 +1,7 @@
-define('ace/snippets/sjs', ['require', 'exports', 'module' ], function(require, exports, module) {
+'use strict';
 
+define('ace/snippets/sjs', ['require', 'exports', 'module'], function (require, exports, module) {
 
-exports.snippetText = "";
-exports.scope = "sjs";
-
+  exports.snippetText = "";
+  exports.scope = "sjs";
 });

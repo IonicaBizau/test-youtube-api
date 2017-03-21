@@ -1,3 +1,5 @@
+"use strict";
+
 window.addEventListener("load", function () {
     var editor = ace.edit("editor");
     var session = editor.getSession();
@@ -15,18 +17,18 @@ window.addEventListener("load", function () {
      * @param {Function} callback The callback function that is called after the response comes.
      * @return {XMLHttpRequest} The XHR that is made.
      */
-    function runCode (code, callback) {
+    function runCode(code, callback) {
         var res = null;
-	fetch("/api/run_code", {
-	    method: "POST",
-	    headers: {
-		"Accept": "application/json"
-	      , "Content-Type": "application/json"
-	    },
-	    body: JSON.stringify({
+        fetch("/api/run_code", {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
                 code: code
-	    })
-	}).then(function (_res) {
+            })
+        }).then(function (_res) {
             res = _res;
             return _res.text();
         }).then(function (text) {
@@ -50,19 +52,19 @@ window.addEventListener("load", function () {
     // auto-complete
     ace.require("ace/ext/language_tools");
     editor.setOptions({
-        enableBasicAutocompletion: true,
+        enableBasicAutocompletion: true
     });
 
-    editor.commands.on("afterExec", function(e){
+    editor.commands.on("afterExec", function (e) {
         console.log(e.args);
-         if (e.command.name == "insertstring"&& e.args === ".") {
-             editor.execCommand("startAutocomplete")
-         }
+        if (e.command.name == "insertstring" && e.args === ".") {
+            editor.execCommand("startAutocomplete");
+        }
     });
 
     // click handler
     document.querySelectorAll(".run-code-btn")[0].addEventListener("click", function () {
-        runCode(editor.getValue(), function(err, data) {
+        runCode(editor.getValue(), function (err, data) {
             responseEditor.setValue(err || data, -1);
         });
     });

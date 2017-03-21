@@ -1,7 +1,7 @@
-define('ace/snippets/golang', ['require', 'exports', 'module' ], function(require, exports, module) {
+'use strict';
 
+define('ace/snippets/golang', ['require', 'exports', 'module'], function (require, exports, module) {
 
-exports.snippetText = "";
-exports.scope = "golang";
-
+  exports.snippetText = "";
+  exports.scope = "golang";
 });

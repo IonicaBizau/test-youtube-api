@@ -1,7 +1,8 @@
-define('ace/snippets/php', ['require', 'exports', 'module' ], function(require, exports, module) {
+'use strict';
 
+define('ace/snippets/php', ['require', 'exports', 'module'], function (require, exports, module) {
 
-exports.snippetText = "snippet <?\n\
+	exports.snippetText = "snippet <?\n\
 	<?php\n\
 \n\
 	${1}\n\
@@ -379,6 +380,5 @@ snippet rett\n\
 snippet retf\n\
 	return false;\n\
 ";
-exports.scope = "php";
-
+	exports.scope = "php";
 });

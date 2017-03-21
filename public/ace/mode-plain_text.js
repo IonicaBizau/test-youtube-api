@@ -1,3 +1,5 @@
+'use strict';
+
 /* ***** BEGIN LICENSE BLOCK *****
  * Distributed under the BSD license:
  *
@@ -28,29 +30,28 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/mode/plain_text', ['require', 'exports', 'module' , 'ace/lib/oop', 'ace/mode/text', 'ace/tokenizer', 'ace/mode/text_highlight_rules', 'ace/mode/behaviour'], function(require, exports, module) {
+define('ace/mode/plain_text', ['require', 'exports', 'module', 'ace/lib/oop', 'ace/mode/text', 'ace/tokenizer', 'ace/mode/text_highlight_rules', 'ace/mode/behaviour'], function (require, exports, module) {
 
+    var oop = require("../lib/oop");
+    var TextMode = require("./text").Mode;
+    var Tokenizer = require("../tokenizer").Tokenizer;
+    var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
+    var Behaviour = require("./behaviour").Behaviour;
 
-var oop = require("../lib/oop");
-var TextMode = require("./text").Mode;
-var Tokenizer = require("../tokenizer").Tokenizer;
-var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
-var Behaviour = require("./behaviour").Behaviour;
-
-var Mode = function() {
-    this.HighlightRules = TextHighlightRules;
-    this.$behaviour = new Behaviour();
-};
-
-oop.inherits(Mode, TextMode);
-
-(function() {
-    this.type = "text";
-    this.getNextLineIndent = function(state, line, tab) {
-        return '';
+    var Mode = function Mode() {
+        this.HighlightRules = TextHighlightRules;
+        this.$behaviour = new Behaviour();
     };
-    this.$id = "ace/mode/plain_text";
-}).call(Mode.prototype);
 
-exports.Mode = Mode;
+    oop.inherits(Mode, TextMode);
+
+    (function () {
+        this.type = "text";
+        this.getNextLineIndent = function (state, line, tab) {
+            return '';
+        };
+        this.$id = "ace/mode/plain_text";
+    }).call(Mode.prototype);
+
+    exports.Mode = Mode;
 });

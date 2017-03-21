@@ -1,7 +1,8 @@
-define('ace/snippets/erlang', ['require', 'exports', 'module' ], function(require, exports, module) {
+'use strict';
 
+define('ace/snippets/erlang', ['require', 'exports', 'module'], function (require, exports, module) {
 
-exports.snippetText = "# module and export all\n\
+	exports.snippetText = "# module and export all\n\
 snippet mod\n\
 	-module(${1:`Filename('', 'my')`}).\n\
 	\n\
@@ -162,6 +163,5 @@ snippet gen_server\n\
 	%%%===================================================================\n\
 \n\
 ";
-exports.scope = "erlang";
-
+	exports.scope = "erlang";
 });

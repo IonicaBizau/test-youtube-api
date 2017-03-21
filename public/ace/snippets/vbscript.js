@@ -1,7 +1,7 @@
-define('ace/snippets/vbscript', ['require', 'exports', 'module' ], function(require, exports, module) {
+'use strict';
 
+define('ace/snippets/vbscript', ['require', 'exports', 'module'], function (require, exports, module) {
 
-exports.snippetText = "";
-exports.scope = "vbscript";
-
+  exports.snippetText = "";
+  exports.scope = "vbscript";
 });

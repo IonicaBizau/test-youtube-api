@@ -1,19 +1,21 @@
+"use strict";
+
 var Youtube = require("youtube-api");
 for (var i in Youtube) {
-    console.log(i);
+	console.log(i);
 }
 
 var autenticated = false;
 
 function autenticate() {
-  Youtube.authenticate({
-			type: "oauth",
-			token: ACCESS_TOKEN
-  });
-  autenticated = true;
+	Youtube.authenticate({
+		type: "oauth",
+		token: ACCESS_TOKEN
+	});
+	autenticated = true;
 }
 
-function getResponseActivities(options,req,res) {
+function getResponseActivities(options, req, res) {
 	if (!autenticated) {
 		autenticate();
 	}
@@ -26,20 +28,20 @@ function getResponseActivities(options,req,res) {
 	});
 }
 
-exports.listAllActivities = function(req, res) {     
-	if (req.params.maxResults) { 
+exports.listAllActivities = function (req, res) {
+	if (req.params.maxResults) {
 		var maxResults = req.params.maxResults;
-    } else {
+	} else {
 		var maxResults = 50;
-    } 
-    
-	getResponseActivities({"part": "snippet,contentDetails", "home":true, "maxResults": maxResults},req,res);	
+	}
+
+	getResponseActivities({ "part": "snippet,contentDetails", "home": true, "maxResults": maxResults }, req, res);
 };
 
-exports.listActivitiesAfter = function(req, res) { 
-	getResponseActivities({"part": "snippet,contentDetails", "home":true, "maxResults": 50, "publishedAfter": req.params.date},req,res);	
+exports.listActivitiesAfter = function (req, res) {
+	getResponseActivities({ "part": "snippet,contentDetails", "home": true, "maxResults": 50, "publishedAfter": req.params.date }, req, res);
 };
 
-exports.listActivitiesBefore = function(req, res) { 
-	getResponseActivities({"part": "snippet,contentDetails", "home":true, "maxResults": 50, "publishedBefore": req.params.date},req,res);	
+exports.listActivitiesBefore = function (req, res) {
+	getResponseActivities({ "part": "snippet,contentDetails", "home": true, "maxResults": 50, "publishedBefore": req.params.date }, req, res);
 };
