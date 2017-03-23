@@ -19,6 +19,8 @@ This is an example application how to use the [`youtube-api`](https://github.com
      - Select *APIs*.
      - Search for *YouTube Data API v3*, click it and click <kbd>Enable API</kbd>
 
+
+
 ## Installation and usage
 
  1. Download this repository by running:
@@ -41,16 +43,21 @@ This is an example application how to use the [`youtube-api`](https://github.com
          - Product logo is optional
          - Home page is optional
          - Save the changes
+
      - Now you will have to set the auth urls. This test application uses the following urls:
 
          - Authorized JavaScript origins: `http://localhost:5000/` (paste it in the first textarea)
          - Authorized redirect URIs: `http://localhost:5000/oauth2callback` (paste it in the second textarea)
+
      - Finally, click <kbd>Create Client ID</kbd>
+
+
 OK, at this step you have the credentials (in your Google app). Now you have to use them in this test application:
 
  1. Rename `credentials.templ.json` into `credentials.json`.
  2. Open `credentials.json` and replace `yourClientId` with the **client id** and `yourSecretKey` with **client secret** generated previously.
  3. Now you are ready. Start the script (`npm start`) and open `http://localhost:5000`.
+
 
 ## :yum: How to contribute
 Have an idea? Found a bug? See [how to contribute][contributing].
