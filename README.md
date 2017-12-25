@@ -12,6 +12,7 @@ This is an example application how to use the [`youtube-api`](https://github.com
 
 ## Before you start
 
+
  1. You need a [Google Account](https://www.google.com/accounts/NewAccount) to access the Google APIs Console, request an API key, and register your application.
  2. [Register your application](https://console.developers.google.com/project) with Google so that it can submit API requests:
  3. After registering your application, select **YouTube Data API** as one of the services that your application uses.
@@ -25,15 +26,18 @@ This is an example application how to use the [`youtube-api`](https://github.com
 
 ## Installation and usage
 
+
  1. Download this repository by running:
     ```sh
     git clone http://github.com/IonicaBizau/test-youtube-api
     ```
+
  2. Enter in the downloaded directory and run `npm install`:
     ```sh
     cd test-youtube-api
     npm install
     ```
+
  3. Go back in your Google app and click again on *APIs & auth* and then select *Credentials*.
  4. Click <kbd>Create new Client ID</kbd>. This will create new OAuth 2.0 credentials:
 
